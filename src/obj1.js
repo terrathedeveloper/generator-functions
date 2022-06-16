@@ -15,22 +15,23 @@ function* zipFunction(list2d) { // Line 1
   //loop through each array and output each item
   let iterator =[...Array(list2d[0].length).keys()]; //Create an array with all possible indexes based on length of first item
   for(let i of iterator){
-      yield* anotherGenerator(list2d,i);  //Must use star on yield to be able to yield iterable
+      //yield* anotherGenerator(list2d,i);  //Must use star on yield to be able to yield iterable
+      yield* list2d.map(item=>item[i]);
   }
   
  /* 
     Initial Thought Process
- 
+
    console.log(list2d[0].shift());
    console.log(list2d[1].shift());
    console.log(list2d[0].shift());
    console.log(list2d[1].shift());
    console.log(list2d[0].shift());
    console.log(list2d[1].shift());
-   console.log('length',list2d[0].length)*/
+   console.log('length',list2d[0].length)//*/
   
 }
-  /*const zipGen = zipFunction([[1,2,3],[4,5,6],[7,8,9]]); // Line 3
+ /* const zipGen = zipFunction([[1,2,3],[4,5,6],[7,8,9]]); // Line 3
   console.log(zipGen.next().value); // Line 4
   console.log(zipGen.next().value); // Line 5
   console.log(zipGen.next().value); // Line 6

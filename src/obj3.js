@@ -3,10 +3,10 @@ Output: The procedure will identify any of these pairs: (9, 2), (2, 9), (4, 7), 
 */
 
 function* pairsSumFunc(list, val) {
-  for (let i = 0; i < list.length; i++) { //loop through list of element
-    if (list[i + 1] && list[i] + list[i + 1] == val) {  //if the consecutive list items exist and are equal to the passed in value
+  for (let i = 1; i < list.length-1; i++) { //loop through list of element
+    if (list[i] + list[i + 1] == val) {  //if the consecutive list items exist and are equal to the passed in value
       yield `(${list[i]}, ${list[i + 1]})`;//store the value in an array
-    } else if (list[i - 1] && list[i - 1] + list[i] == val) { //if the list item behind and the current list item equal the sum
+    } else if (list[i - 1] + list[i] == val) { //if the list item behind and the current list item equal the sum
       yield `(${list[i]}, ${list[i - 1]})`;//store the value in the array
     }
   }
