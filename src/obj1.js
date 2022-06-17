@@ -9,26 +9,28 @@ function* anotherGenerator(list,iter) {
   }
 }
 
-function* zipFunction(list2d) { // Line 1
+function* getZippedSequence(nums) { // Line 1
   //Assume all arrays are the same length
   //Figure out how many arrays need to be zipped together
   //loop through each array and output each item
-  let iterator =[...Array(list2d[0].length).keys()]; //Create an array with all possible indexes based on length of first item
+  const indexArr = Array(nums[0].length).keys();
+  let iterator =[...indexArr]; //Create an array with all possible indexes based on length of first item
   for(let i of iterator){
-      //yield* anotherGenerator(list2d,i);  //Must use star on yield to be able to yield iterable
-      yield* list2d.map(item=>item[i]);
+      //The yield* expression is used to delegate to another generator or iterable object.
+      //yield* anotherGenerator(nums,i);  //Must use star on yield to be able to yield iterable
+      yield* nums.map(item=>item[i]);
   }
   
  /* 
     Initial Thought Process
 
-   console.log(list2d[0].shift());
-   console.log(list2d[1].shift());
-   console.log(list2d[0].shift());
-   console.log(list2d[1].shift());
-   console.log(list2d[0].shift());
-   console.log(list2d[1].shift());
-   console.log('length',list2d[0].length)//*/
+   console.log(nums[0].shift());
+   console.log(nums[1].shift());
+   console.log(nums[0].shift());
+   console.log(nums[1].shift());
+   console.log(nums[0].shift());
+   console.log(nums[1].shift());
+   console.log('length',nums[0].length)//*/
   
 }
  /* const zipGen = zipFunction([[1,2,3],[4,5,6],[7,8,9]]); // Line 3
@@ -41,4 +43,4 @@ function* zipFunction(list2d) { // Line 1
   console.log(zipGen.next().value); // Line 6
   console.log(zipGen.next().value); // Line 6
   console.log(zipGen.next().value); // Line 6*/
-  module.exports=zipFunction;
+  module.exports=getZippedSequence;
