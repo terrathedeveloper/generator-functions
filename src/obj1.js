@@ -13,11 +13,11 @@ function* getZippedSequence(nums) { // Line 1
   //Assume all arrays are the same length
   //Figure out how many arrays need to be zipped together
   //loop through each array and output each item
-  const iterator =  [...Array(nums[0].length).keys()];//Create an array with all possible indexes based on length of first item
-  for(let i of iterator){
+  const iter =  [...Array(nums[0].length).keys()];//Create an array with all possible indexes based on length of first item
+  for(let i of iter){
       //The yield* expression is used to delegate to another generator or iterable object.
       //yield* anotherGenerator(nums,i);  //Must use star on yield to be able to yield iterable
-      yield* nums.map(item=>item[i]);
+      yield* nums.map(num=>num[i]);
   }
   
  /* 

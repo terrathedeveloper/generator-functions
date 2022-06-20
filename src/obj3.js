@@ -4,11 +4,10 @@ Output: The procedure will identify any of these pairs: (9, 2), (2, 9), (4, 7), 
 
 function* getPairBySum(nums, targetSum) {
   for (let i = 1; i < nums.length-1; i++) { //loop through nums of element
-    
     const prev = nums[i - 1], curr=nums[i], next=nums[i + 1];
     if (curr + next == targetSum) {  //if the consecutive nums items exist and are equal to the passed in value
       yield `(${curr}, ${next})`;//store the value in an array
-    } else if (curr + prev == targetSum) { //if the nums item behind and the current nums item equal the sum
+    } else if (prev + curr == targetSum) { //if the nums item behind and the current nums item equal the sum
       yield `(${curr}, ${prev})`;//store the value in the array
     }
   }
